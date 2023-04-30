@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SliderInfo>
+@{
+    ViewData["Title"] = "SliderInfo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <a class="btn btn-success text-white" asp-action="Create" style="float:right">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">SignatureImage</th>
+                <th scope="col">Tittle</th>
+                <th scope="col">Description</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sliderInfo in Model)
+            {
+                <tr>
+                    <td><img src="~/img/@sliderInfo.SignatureImage" style="width:100px;height:70px" /></td>
+                    <td>@Html.Raw(sliderInfo.Title)</td>
+                    <td>@Html.Raw(sliderInfo.Description)</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@sliderInfo.Id">Info</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@sliderInfo.Id">Edit</a>
+                        <form style="display:inline-block;" asp-action="Delete" asp-route-id="@sliderInfo.Id" method="post">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

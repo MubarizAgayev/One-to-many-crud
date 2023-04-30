@@ -1,0 +1,31 @@
+﻿@model SliderInfo
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <input class="form-control" id="customFile" asp-for="Photo" />
+        <span class="text-danger" asp-validation-for="Photo"></span><br />
+        <label>Tittle:</label>
+        <textarea class="form-control" id="category-text" rows="3" asp-for="Title"></textarea>
+        <span class="text-danger" asp-validation-for="Title"></span><br />
+        <label>Description:</label>
+        <textarea class="form-control" id="category-text2" rows="3" asp-for="Description"></textarea>
+        <span class="text-danger" asp-validation-for="Description"></span><br />
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("category-text");
+        CKEDITOR.replace("category-text2");
+    </script>
+}
+

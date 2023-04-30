@@ -1,0 +1,21 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <div class="slider-content">
+        <img src="~/img/@Model.Image" />
+    </div>
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+        <input class="form-control"  asp-for="Photo" />
+        <span class="text-danger" asp-validation-for="Photo"></span>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+
+</div>
+

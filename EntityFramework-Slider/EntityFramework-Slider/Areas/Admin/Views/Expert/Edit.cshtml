@@ -1,0 +1,27 @@
+﻿@model Expert
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <div class="slider-content">
+        <img src="~/img/@Model.Image" />
+    </div>
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+        <input class="form-control" id="customFile" asp-for="Photo" />
+        <span asp-validation-for="Photo"></span><br />
+        <label>Tittle:</label>
+        <input class="form-control" asp-for="FullName"></input>
+        <span asp-validation-for="FullName"></span><br />
+        <label>Description</label>
+        <input class="form-control" asp-for="Position"></input>
+        <span asp-validation-for="Position"></span>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+
+</div>
+

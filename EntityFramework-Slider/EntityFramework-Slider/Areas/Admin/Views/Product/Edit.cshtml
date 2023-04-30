@@ -1,0 +1,54 @@
+﻿@model ProductEditVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" id="customFile" asp-for="Name" />
+            <span class="text-danger" asp-validation-for="Name"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" id="description-text" rows="5" asp-for="Description"></textarea>
+            <span class="text-danger" asp-validation-for="Description"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" step=".01" class="form-control" id="customFile" asp-for="Price" />
+            <span class="text-danger" asp-validation-for="Price"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Count</label>
+            <input class="form-control" id="customFile" asp-for="Count" />
+            <span class="text-danger" asp-validation-for="Count"></span><br />
+        </div>
+        <label>Category</label>
+        <select class="form-control" id="customFile" asp-for="CategoryId" asp-items="@ViewBag.categories"></select><br />
+        <div class="form-group">
+            @foreach (var item in Model.Images)
+            {
+                <img src="~/img/@item.Image" style="width:150px;height:150px;" />
+            }
+            <input class="form-control" id="customFile" asp-for="Photos" />
+            <span class="text-danger" asp-validation-for="Photos"></span>
+        </div>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("description-text");
+    </script>
+}
+
+

@@ -1,0 +1,15 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <h2>Slider detail</h2>
+    <div class="slider-content">
+        <img src="~/img/@Model.Image" />
+    </div>
+    <a class="btn btn-outline-info mt-5" asp-action="Index">Back</a>
+</div>
+

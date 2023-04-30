@@ -1,0 +1,27 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <label>Image input:</label>
+        <input class="form-control" id="customFile" asp-for="Photo" />
+        <span class="text-danger" asp-validation-for="Photo"></span>
+        <label>Header input:</label>
+        <input type="text" minlength="" maxlength="" class="form-control" id="customFile" asp-for="Header" />
+        <span class="text-danger" asp-validation-for="Header"></span>
+        <label>Description input:</label>
+        <input type="text" minlength="" maxlength="" class="form-control" id="customFile" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+        <label>Date input:</label>
+        <input type="datetime-local" asp-for="Date">
+        <span class="text-danger" asp-validation-for="Date"></span>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,25 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <span class="text-danger">@ViewBag.error</span>
+    <form asp-action="Edit" method="post">
+        <input type="text" class="form-control" id="customFile" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    
+}
+

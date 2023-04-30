@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Expert>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+    <a class="btn btn-success text-white" asp-action="Create" style="float:right">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Position</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expert in Model)
+            {
+                <tr>
+                    <th><img src="~/img/@expert.Image" style="width:100px;height:70px" /></th>
+                    <td>
+                        @expert.FullName
+                    </td>
+                    <td>
+                        @expert.Position
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@expert.Id">Info</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@expert.Id">Edit</a>
+                        <form style="display:inline-block;" asp-action="Delete" asp-route-id="@expert.Id" method="post">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

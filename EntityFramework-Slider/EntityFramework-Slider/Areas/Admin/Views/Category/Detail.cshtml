@@ -1,0 +1,12 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+      <input type="text" class="form-control" id="customFile" asp-for="Name" disabled="disabled"/>
+      <a class="btn btn-light mt-3" asp-action="Index">Cancel</a>
+</div>

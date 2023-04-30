@@ -1,0 +1,68 @@
+﻿<link rel="stylesheet" href="~/css/StyleSheet.css">
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal grandTotal = 0;
+}
+
+@model List<BasketDetailVM>
+
+
+
+<div class="container">
+    
+    @if (Model.Count > 0)
+    {
+        <h1 class="my-3">Products</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prize</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr data-id="@item.Id">
+                        <td><img style="height:100px;width:100px" src="~/img/@item.Image"></td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.Price ₼</td>
+                        <td>@item.Count</td>
+                        <td>@item.Total ₼</td>
+                        <td>
+                            <form method="post">
+                                <button data-id="@item.Id" class="btn btn-danger btn-sm delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    grandTotal += item.Total;
+                }
+            </tbody>
+        </table>
+
+
+        <h1 class="my-4 text-right grand-total">Grand Total: <span>@grandTotal</span> ₼</h1>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            Products not yet added
+        </div>
+    }
+
+
+    
+</div>
+
